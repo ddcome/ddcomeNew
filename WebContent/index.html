@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<meta name="description" content="DDCOME的博客，分享技术，记录生活">
+	<meta name="keywords" content="web前端，JavaScript，java,大数据,博客,hadoop,高可用,ddcome,读书,算法,技术,技术博客">
+	<meta name="author" content="DDCOME">
+	<link rel="icon" href="./script-packages/imgs/logo.jpg">
+	<title>DDCOME</title>
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="script-packages/bootstrap-4/css/bootstrap.min.css">
+	<link href="./script-packages/css/main.css" rel="stylesheet">
+	<link href="./script-packages/css/index.css" rel="stylesheet">
+	<link href="./script-packages/css/animate.min.css" rel="stylesheet">
+	<!-- 分页CSS -->
+	<link href="./script-packages/css/pagination.css" rel="stylesheet">
+	<link href="./script-packages/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<!-- 动画加载效果 -->
+	<link href="./script-packages/css/loading/loading.css" rel="stylesheet">
+	<link href="./script-packages/videoJS/video-js.css" rel="stylesheet">
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script src="./script-packages/bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
+</head>
+
+<body>
+	<!-- 导航栏 -->
+	<div class="header-nav-ostyle">
+			<ul class="nav justify-content-center h5">
+				<li class="nav-item active"><a class="nav-link text-dark" href="index.html">Home <span class="sr-only">(current)</span></a></li>
+				<li class="nav-item"><a class="nav-link text-dark" href="docs.html">Notes</a></li>
+				<li class="nav-item"><a class="nav-link text-dark" href="mylife.html">My Life</a></li>
+				<li class="nav-item"><a class="nav-link text-dark" href="contact.html">Contact</a></li>
+			</ul>
+	</div>
+	<!-- 占位 -->
+	<div class="container" style="height: 50px; ">
+		<div class="row">&nbsp;</div>
+	</div>
+	<!-- 内容区 -->
+	<!-- Example row of columns -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 left-content-ostyle">
+
+				<div class="card backg-ostyle card-align-ostyle">
+					<img class="card-img-top" src="./script-packages/imgs/bg_blog.jpg"
+						width="100%" height="200" alt="Card image cap"> <img
+						class="person-ostyle" src="./script-packages/imgs/person.png"
+						width="35%">
+					<div class="card-block">
+						<div class="card-text beauty-sfont-ostyle">
+							I'm a front-end engineer,but I also learn more about Java language.
+							<br/>
+							<div style="border-top: 1px solid #aaa;"></div>
+							<font id="words-font">My Feeling HERE</font>
+							<div style="border-top: 1px solid #aaa;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 clear-distance-ostyle"></div>
+				<div class="card">
+				  <div class="card-header"><i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;Books</div>
+
+				  	<div class="card-body">
+				  		<ul class="ul-ostyle" id="books-ul">
+						</ul>
+						<!-- Loading加载效果 -->
+						<div id="loading-books" class="spinner">
+						  <div class="rect1"></div>
+						  <div class="rect2"></div>
+						  <div class="rect3"></div>
+						  <div class="rect4"></div>
+						  <div class="rect5"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-12 clear-distance-ostyle"></div>
+				<!-- 加载友好界面  -->
+				<!-- 
+				<div class="card backg-ostyle">
+					<div class="card-block loading-ostyle"
+						style="height: 300px; text-align: center; line-height: 300px; color: #2E8A4D;">
+						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+					</div>
+				</div>
+				 -->
+			</div>
+			<!-- 内容区域 -->
+			<div class="col-md-7">
+				<div class="card">
+				  	<div class="card-body">
+						<div class="input-group">
+							<input type="text" id="search-input" class="form-control"
+								placeholder="Search for..."> <span
+								class="input-group-btn">
+								<button class="btn btn-secondary" type="button" onclick="search()"><font style="color:yellow;font-weight: bolder;">S</font>earch</button>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 clear-distance-ostyle"></div>
+				<!-- 视频区域 -->
+				<!-- <video id="video-div" width="100%" height="365" controls="controls" style="padding:0px;">
+					<source id="video-source" src="./script-packages/video/movie.mp4" type="audio/mpeg">
+				</video>
+				<div style="margin-bottom:10px;">
+					<p style="text-align:center;" id="video-tags">
+					</p>
+				</div> -->
+				<div class="card backg-ostyle" style="border:0px;">
+					<div class="card-body">
+						<h4 style="text-align: center; font-weight: 800;">Latest Articles</h4>
+						<!-- 说明信息 -->
+						<div class="article-ostyle">
+							<div class="title-ostyle">
+								<a>&nbsp;</a> 
+								<div style="float: right;">
+									<span class="badge badge-success">评论量</span>
+									<span class="badge badge-info">浏览量</span>
+									<span class="badge badge-secondary">发表时间</span>
+								</div>
+							</div>
+						</div>
+						
+						<!-- Loading加载效果 -->
+						<div id="loading" class="spinner">
+						  <div class="rect1"></div>
+						  <div class="rect2"></div>
+						  <div class="rect3"></div>
+						  <div class="rect4"></div>
+						  <div class="rect5"></div>
+						</div>
+						
+						<!-- 数据列表 -->
+						<div id="content-broad" class="card-text article-ostyle">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 clear-distance-ostyle"></div>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	</div>
+
+	<!-- /container -->
+
+	<footer id="footer-ostyle">
+		<div>
+			<a href="https://github.com/ddcome" class="footer-ostyle-github" style="font-size: 25px;color: #111;"><i class="fa fa-github" aria-hidden="true"></i></a><br>
+			&copy;2014-2018 版权归ddcome博客所有&nbsp;<i class="fa fa-registered" aria-hidden="true"></i>支持原创<br>
+			<i class="fa fa-shield" aria-hidden="true"></i>蒙ICP备14004842号-2<br>
+			lxd_ddcome@163.com
+		</div>
+	</footer>
+
+	<!-- Bootstrap core JavaScript ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+	<script src="./script-packages/js/jquery-1.11.1.js"></script>
+	<script src="./script-packages/js/jquery.cookie.js"></script>
+	<script src="./script-packages/js/jquerysession.js"></script>
+	<script src="./script-packages/videoJS/video.min.js"></script>
+	<script src="./script-packages/videoJS/videojs-ie8.min.js"></script>
+	<script src="./script-packages/js/own/pagination.own.js"></script>
+	<!-- 调试工具 及时刷新 TODO 删除 -->
+	<!--<script src="./script-packages/js/live.js"></script>-->
+	<script>
+		//window.jQuery || document.write('<script src="./script-packages/bootstrap/assets/js/vendor/jquery.min.js"><\/script>');
+		
+		function show() {
+			$("#loading").hide();
+			$("#content-broad").show();
+		}
+		
+		function hide() {
+			$("#loading").show();
+			$("#content-broad").hide();
+		}
+		
+		function showLoadingBooks() {
+			$("#loading-books").hide();
+			$("#books-ul").show();
+		}
+		
+		function hideLoadingBooks() {
+			$("#loading-books").show();
+			$("#books-ul").hide();
+		}
+		
+		function find() {
+			var res;
+			var params = {
+				action : 'latest-data',
+				data : {
+					limitNum: 20
+				}
+			};
+			$.ajax({
+				async : true, //异步
+				url : "/ddcomeNew/goodLuckToDd/forend",
+				type : "post",
+				data : {
+					params : JSON.stringify(params)
+				},
+				dataType : "json",
+				success : function(jsonData) {
+					/*
+					$("#message").html(json.message);
+					//成功跳转
+					if(json.status.toString() == '1'){
+						 window.location.href="index.html";
+					}
+					 */
+					 res = jsonData;
+					loadData(jsonData);
+					show();
+				},
+				error : function(jsonData) {
+					/*
+					alert(json.message);
+					$("#message").html(json.message);
+					 */
+					res = jsonData;
+				}
+			});
+			return res;
+		}
+		
+		function findBooks() {
+			var res;
+			var params = {
+				action : 'all-books',
+				data : {}
+			};
+			$.ajax({
+				async : true, //异步
+				url : "/ddcomeNew/goodLuckToDd/forend",
+				type : "post",
+				data : {
+					params : JSON.stringify(params)
+				},
+				dataType : "json",
+				success : function(jsonData) {
+					/*
+					$("#message").html(json.message);
+					//成功跳转
+					if(json.status.toString() == '1'){
+						 window.location.href="index.html";
+					}
+					 */
+					res = jsonData;
+					loadBooksData(jsonData);
+					showLoadingBooks();//显示
+				},
+				error : function(jsonData) {
+					/*
+					alert(json.message);
+					$("#message").html(json.message);
+					 */
+					res = jsonData;
+				}
+			});
+			return res;
+		}
+		
+		function findWords() {
+			var res;
+			var params = {
+				action : 'all-words',
+				data : {}
+			};
+			$.ajax({
+				async : true, //异步
+				url : "/ddcomeNew/goodLuckToDd/forend",
+				type : "post",
+				data : {
+					params : JSON.stringify(params)
+				},
+				dataType : "json",
+				success : function(jsonData) {
+					/*
+					$("#message").html(json.message);
+					//成功跳转
+					if(json.status.toString() == '1'){
+						 window.location.href="index.html";
+					}
+					 */
+					loadWordsData(jsonData);
+				},
+				error : function(jsonData) {
+					/*
+					alert(json.message);
+					$("#message").html(json.message);
+					 */
+					res = jsonData;
+				}
+			});
+		}
+		
+		function wordsTimer(data,index) {
+			$("#words-font").html("");
+			var cont = data[index].word;
+			index++;
+			$("#words-font").html(cont);
+		}
+		
+		function loadWordsData(data) {
+			
+			var index = 0;
+			//setInterval(wordsTimer(data,index),10);
+			setInterval(function() {
+				if(index==data.length) {
+					index = 0;
+				}
+				$("#words-font").html("");
+				var cont = data[index].word;
+				index++;
+				$("#words-font").html(cont);
+			},6000);
+			
+		}
+		
+		/**
+		* Books版面
+		*/
+		function loadBooksData(data) {
+			
+			$("#books-ul").empty();
+			var cont="";
+			for(var i=0; i<data.length; i++) {				
+				cont += '<li>'+data[i].book_name+'</li>';
+			}
+			$("#books-ul").append($(cont));
+			
+		}
+		
+		function loadData(data) {
+			$("#content-broad").empty();
+			var cont= "";
+			for(var i=0; i<data.length; i++) {
+				cont += "<div style='border-top:1px solid #ccc;'></div>";
+				//过滤空标题数据
+				if(data[i].title=="") {
+					continue;
+				}
+				var url = data[i].type=='pdf'?'pdf.html':data[i].type=='text'?'text.html':'md.html';
+				cont += ''+
+				'<div class="title-ostyle">'+
+				'<a class="title-ostyle-line" href="'+url+'?id='+data[i].id+'">';
+				if(data[i].title.length>22) {
+					cont += data[i].title.substring(0,22)+'...';
+				} else {
+					cont += data[i].title;
+				}
+				cont += '</a>'+
+				'<div style="float: right;">';
+						if(data[i].comment_times>0) {
+							cont += '<span class="badge badge-success">'+data[i].comment_times+'</span> ';
+						}
+						if(parseInt(data[i].browse_times)>0) {
+							cont += '<span class="badge badge-info">'+data[i].browse_times+'</span> ';
+						}
+						cont += '<span class="badge badge-secondary">'+data[i].publish_time.substring(0,10).replace(/-/g,"") +'</span>'
+					+ '</div>'
+				+ '</div>';
+			}
+			$("#content-broad").append($(cont));
+		}
+		
+		/**
+		* 搜索 
+		*/
+		function search() {
+			hide();
+			//获取search输入框的值
+			var searchStr = $("#search-input").val().trim();
+			//过滤脏数据
+			if(searchStr=='') {
+				return;
+			}
+			//查询
+			var res;
+			var params = {
+				action : 'search',
+				data : {
+					searchWords:searchStr
+				}
+			};
+			console.log(JSON.stringify(params));
+			$.ajax({
+				async : true, //异步
+				url : "/ddcomeNew/goodLuckToDd/forend",
+				type : "post",
+				data : {
+					params : JSON.stringify(params)
+				},
+				dataType : "json",
+				success : function(jsonData) {
+					initPage(jsonData,7);
+					loadData(jsonData);
+					show();
+				},
+				error : function(jsonData) {
+					res = jsonData;
+				}
+			});
+		}
+
+		$(function() {
+			hideLoadingBooks();
+			console.info("Welcome to visit DDCOME Website");
+			hide();
+			find();
+			//接着查询书
+			findBooks();
+			//查询语录
+			findWords();
+			//记录IP
+			//recordIP();
+		});
+	</script>
+	<script src="./script-packages/bootstrap-4/js/bootstrap.min.js"></script>
+	<!-- 由于IP请求第三方服务，故而放置于最后实现 -->
+	<!-- <script src="./script-packages/js/own/ip.own.js"></script> -->
+</body>
+</html>

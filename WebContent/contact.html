@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./script-packages/imgs/logo.jpg">
+
+    <title>DDCOME</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="./script-packages/bootstrap-4/css/bootstrap.min.css">
+    <link href="./script-packages/css/main.css" rel="stylesheet">
+    <link href="./script-packages/css/index.css" rel="stylesheet">
+    <link href="./script-packages/css/animate.min.css" rel="stylesheet">
+    <!-- 分页CSS -->
+    <link href="./script-packages/css/pagination.css" rel="stylesheet">
+    <link href="./script-packages/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="./script-packages/bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="./script-packages/js/test/data.js"></script>
+</head>
+
+<body>
+<!-- 导航栏 -->
+<div class="header-nav-ostyle">
+    <ul class="nav justify-content-center h5">
+        <li class="nav-item active"><a class="nav-link text-dark" href="index.html">Home <span class="sr-only">(current)</span></a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="docs.html">Notes</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="mylife.html">My Life</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="contact.html">Contact</a></li>
+    </ul>
+</div>
+
+<!-- 内容区 -->
+<!-- Example row of columns -->
+<div class="container">
+    <div class="row">
+        <!--<div class="col-md-12">&nbsp;</div>&lt;!&ndash; 占位 &ndash;&gt;-->
+        <!--<div class="col-md-12">&nbsp;</div>&lt;!&ndash; 占位 &ndash;&gt;-->
+        <div class="col-md-12" style="display: flex; justify-content: center; align-items: Center;margin-top: 20%;">
+            <img alt="" src="./script-packages/imgs/person.png" width="120" height="120">
+        </div>
+        <div class="col-md-12">&nbsp;</div><!-- 占位 -->
+        <!-- 内容区域 -->
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div style=" border-top: 1px solid #555; border-bottom: 1px solid #555; padding: 20px;">
+                <div style="padding:0px;margin:0px;text-align:center;">
+                    邮箱：lxd_ddcome@163.com<br/>
+                    QQ：1968490710<br/>
+                    <span style="font-size: 10px;">这里记录着12杯咖啡和3年的故事</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+
+<!-- /container -->
+
+<footer id="footer-ostyle" style="position: absolute; bottom: 0; width: 100%;">
+    <div>
+        <a href="https://github.com/ddcome" class="footer-ostyle-github" style="font-size: 25px;color: #111;"><i class="fa fa-github" aria-hidden="true"></i></a><br>
+        &copy;2014-2018 版权归ddcome博客所有&nbsp;<i class="fa fa-registered" aria-hidden="true"></i>支持原创<br>
+        <i class="fa fa-shield" aria-hidden="true"></i>蒙ICP备14004842号-2<br>
+        lxd_ddcome@163.com
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="./script-packages/js/jquery-1.11.1.js"></script>
+<script src="./script-packages/js/jquery.cookie.js"></script>
+<script src="./script-packages/js/jquerysession.js"></script>
+<script>
+    // window.jQuery || document.write('<script src="script-packages/bootstrap/assets/js/vendor/jquery.min.js"><\/script>');
+
+    function find() {
+        var res;
+        var params = {
+            action: 'latest-data',
+            data: {
+                limitNum: 20
+            }
+        };
+        console.log(JSON.stringify(params));
+        $.ajax({
+            async: false, //禁止异步
+            url: "/ddcomeNew/goodLuckToDd/forend",
+            type: "post",
+            data: {
+                params: JSON.stringify(params)
+            },
+            dataType: "json",
+            success: function (json) {
+                /*
+                $("#message").html(json.message);
+                //成功跳转
+                if(json.status.toString() == '1'){
+                     window.location.href="index.html";
+                }
+                 */
+                console.log("成功 >>> ");
+                console.log(json);
+                res = json;
+            },
+            error: function (json) {
+                /*
+                alert(json.message);
+                $("#message").html(json.message);
+                 */
+                console.log("失败");
+                console.log(json);
+                res = json;
+            }
+        });
+        return res;
+    }
+
+    function findBooks() {
+        var res;
+        var params = {
+            action: 'all-books',
+            data: {}
+        };
+        console.log(JSON.stringify(params));
+        $.ajax({
+            async: false, //禁止异步
+            url: "/ddcomeNew/goodLuckToDd/forend",
+            type: "post",
+            data: {
+                params: JSON.stringify(params)
+            },
+            dataType: "json",
+            success: function (json) {
+                /*
+                $("#message").html(json.message);
+                //成功跳转
+                if(json.status.toString() == '1'){
+                     window.location.href="index.html";
+                }
+                 */
+                console.log("成功 >>> ");
+                console.log(json);
+                res = json;
+            },
+            error: function (json) {
+                /*
+                alert(json.message);
+                $("#message").html(json.message);
+                 */
+                console.log("失败");
+                console.log(json);
+                res = json;
+            }
+        });
+        return res;
+    }
+
+    function findWords() {
+        var res;
+        var params = {
+            action: 'all-words',
+            data: {}
+        };
+        console.log(JSON.stringify(params));
+        $.ajax({
+            async: false, //禁止异步
+            url: "/ddcomeNew/goodLuckToDd/forend",
+            type: "post",
+            data: {
+                params: JSON.stringify(params)
+            },
+            dataType: "json",
+            success: function (json) {
+                /*
+                $("#message").html(json.message);
+                //成功跳转
+                if(json.status.toString() == '1'){
+                     window.location.href="index.html";
+                }
+                 */
+                console.log("成功 >>> ");
+                console.log(json);
+                res = json;
+            },
+            error: function (json) {
+                /*
+                alert(json.message);
+                $("#message").html(json.message);
+                 */
+                console.log("失败");
+                console.log(json);
+                res = json;
+            }
+        });
+        return res;
+    }
+
+    function wordsTimer(data, index) {
+        console.log("come in " + index);
+        $("#words-font").html("");
+        var cont = data[index].word;
+        index++;
+        $("#words-font").html(cont);
+    }
+
+    function loadWordsData(data) {
+
+        var index = 0;
+        //setInterval(wordsTimer(data,index),10);
+        setInterval(function () {
+            if (index == data.length) {
+                index = 0;
+            }
+            $("#words-font").html("");
+            var cont = data[index].word;
+            index++;
+            $("#words-font").html(cont);
+        }, 6000);
+
+    }
+
+    function loadBooksData(data) {
+        $("#books-ul").empty();
+        var cont = "";
+        for (var i = 0; i < data.length; i++) {
+            cont += '<li><span class="label label-pill label-success">'
+                + (i + 1) + '</span>' + data[i].book_name + '</li>';
+        }
+        $("#books-ul").append($(cont));
+    }
+
+    function loadData(data) {
+        $("#content-broad").empty();
+        console.log(data);
+        var cont = "";
+        for (var i = 0; i < data.length; i++) {
+            console.log(i);
+            //过滤空标题数据
+            if (data[i].title == "") {
+                continue;
+            }
+            var url = data[i].type == 'pdf' ? 'pdf.html' : 'text.html';
+            cont += '' + '<div class="title-ostyle">' + '<a href="' + url
+                + '?id=' + data[i].id + '">' + data[i].title + '</a>'
+                + '<div style="float: right;">';
+            //if(data[i].comments.length>0) {
+            //	cont += '<span class="label label-info">00000</span> ';
+            //}
+            if (parseInt(data[i].browse_times) > 0) {
+                cont += '<span class="label label-warning">'
+                    + data[i].browse_times + '</span> ';
+            }
+            cont += '<span class="label label-default">'
+                + data[i].publish_time.substring(0, 10).replace(/-/g,
+                    "") + '</span> ' + '</div>' + '</div>';
+        }
+        $("#content-broad").append($(cont));
+    }
+
+    $(function () {
+        console.log("Welcome to visit DDCOME`Website");
+        var data = find();
+        loadData(data);
+        //接着查询书
+        var booksData = findBooks();
+        loadBooksData(booksData);
+        //查询语录
+        var wordsData = findWords();
+        loadWordsData(wordsData);
+
+        //记录IP
+        // recordIP();
+    });
+</script>
+<script src="./script-packages/bootstrap-4/js/bootstrap.min.js"></script>
+<!-- 由于IP请求第三方服务，故而放置于最后实现 -->
+<!--<script src="script-packages/js/own/ip.own.js"></script>-->
+</body>
+</html>

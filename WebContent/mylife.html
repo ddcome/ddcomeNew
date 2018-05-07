@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="./script-packages/imgs/logo.jpg">
+
+<title>DDCOME</title>
+
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="./script-packages/bootstrap-4/css/bootstrap.min.css">
+<link href="./script-packages/css/main.css" rel="stylesheet">
+<link href="./script-packages/css/index.css" rel="stylesheet">
+<link href="./script-packages/css/animate.min.css" rel="stylesheet">
+<!-- 分页CSS -->
+<link href="./script-packages/css/pagination.css" rel="stylesheet">
+<link href="./script-packages/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="./script-packages/bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="./script-packages/js/test/data.js"></script>
+</head>
+
+<body>
+	<!-- 导航栏 -->
+	<div class="header-nav-ostyle">
+			<ul class="nav justify-content-center h5">
+				<li class="nav-item active"><a class="nav-link text-dark" href="index.html">Home <span class="sr-only">(current)</span></a></li>
+				<li class="nav-item"><a class="nav-link text-dark" href="docs.html">Notes</a></li>
+				<li class="nav-item"><a class="nav-link text-dark" href="mylife.html">My Life</a></li>
+				<li class="nav-item"><a class="nav-link text-dark" href="contact.html">Contact</a></li>
+			</ul>
+	</div>
+	<!-- 占位 -->
+	<div class="container" style="height: 50px; "><div class="row">&nbsp;</div></div>
+
+	<!-- 内容区 -->
+	<!-- Example row of columns -->
+	<div class="container">
+		<div class="row">
+			<!-- 内容区域 -->
+			<div class="col-md-12">
+				<div class="card backg-ostyle">
+					<div class="card-header" style="text-align: center; font-weight: 800;">MyLife On Earth</div>
+					<!-- 数据列表 -->
+					<div class="card-body article-ostyle">
+						<div id="main_echart" style="width: 100%; height: 650px;"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12 clear-distance-ostyle"></div>
+		</div>
+	</div>
+	<!-- /container -->
+
+	<footer id="footer-ostyle">
+		<div>
+			<a href="https://github.com/ddcome" class="footer-ostyle-github" style="font-size: 25px;color: #111;"><i class="fa fa-github" aria-hidden="true"></i></a><br>
+			&copy;2014-2018 版权归ddcome博客所有&nbsp;<i class="fa fa-registered" aria-hidden="true"></i>支持原创<br>
+			<i class="fa fa-shield" aria-hidden="true"></i>蒙ICP备14004842号-2<br>
+			lxd_ddcome@163.com
+		</div>
+	</footer>
+
+	<!-- Bootstrap core JavaScript -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="./script-packages/js/jquery-1.11.1.js"></script>
+	<script src="./script-packages/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="./script-packages/js/echarts-all-3.js"></script>
+	<script src="./script-packages/js/maps/world.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+	<script type="text/javascript" src="./script-packages/js/bmap.min.js"></script>
+
+	<script>
+		// 基于准备好的dom，初始化echarts实例
+		var myChart = echarts.init(document.getElementById('main_echart'));
+
+		var data = [ {
+			name : '青岛',
+			value : 108
+		}, {
+			name : '拉萨',
+			value : 104
+		}, {
+			name : '上海',
+			value : 105
+		}, {
+			name : '威海',
+			value : 105
+		}, {
+			name : '厦门',
+			value : 260
+		}, {
+			name : '东莞',
+			value : 106
+		}, {
+			name : '南宁',
+			value : 107
+		}, {
+			name : '惠州',
+			value : 107
+		}, {
+			name : '嘉峪关',
+			value : 108
+		}, {
+			name : '广州',
+			value : 308
+		}, {
+			name : '清远',
+			value : 109
+		}, {
+			name : '昆明',
+			value : 109
+		}, {
+			name : '深圳',
+			value : 101
+		}, {
+			name : '珠海',
+			value : 102
+		}, {
+			name : '咸阳',
+			value : 53
+		}, {
+			name : '苏州',
+			value : 50
+		}, {
+			name : '三亚',
+			value : 54
+		}, {
+			name : '呼和浩特',
+			value : 358
+		}, {
+			name : '成都',
+			value : 58
+		}, {
+			name : '北京',
+			value : 280
+		}, {
+			name : '包头',
+			value : 80
+		}, {
+			name : '南充',
+			value : 104
+		}, {
+			name : '哈尔滨',
+			value : 54
+		}, {
+			name : '保定',
+			value : 53
+		}, {
+			name : '廊坊',
+			value : 43
+		}, {
+			name : '菏泽',
+			value : 74
+		}, {
+			name : '武汉',
+			value : 273
+		}, {
+			name : '纽约',
+			value : 373
+		}, {
+			name : '巴黎',
+			value : 203
+		}, {
+			name : '悉尼',
+			value : 203
+		} ];
+		var geoCoordMap = {
+			'青岛' : [ 120.33, 36.07 ],
+			'拉萨' : [ 91.11, 29.97 ],
+			'上海' : [ 121.48, 31.22 ],
+			'威海' : [ 122.1, 37.5 ],
+			'厦门' : [ 118.1, 24.46 ],
+			'东莞' : [ 113.75, 23.04 ],
+			'南宁' : [ 108.33, 22.84 ],
+			'惠州' : [ 114.4, 23.09 ],
+			'嘉峪关' : [ 98.289152, 39.77313 ],
+			'广州' : [ 113.23, 23.16 ],
+			'清远' : [ 113.01, 23.7 ],
+			'昆明' : [ 102.73, 25.04 ],
+			'深圳' : [ 114.07, 22.62 ],
+			'珠海' : [ 113.52, 22.3 ],
+			'咸阳' : [ 108.72, 34.36 ],
+			'苏州' : [ 120.62, 31.32 ],
+			'三亚' : [ 109.511909, 18.252847 ],
+			'呼和浩特' : [ 111.65, 40.82 ],
+			'成都' : [ 104.06, 30.67 ],
+			'北京' : [ 116.46, 39.92 ],
+			'包头' : [ 110, 40.58 ],
+			'南充' : [ 106.110698, 30.837793 ],
+			'哈尔滨' : [ 126.63, 45.75 ],
+			'保定' : [ 115.48, 38.85 ],
+			'廊坊' : [ 116.7, 39.53 ],
+			'菏泽' : [ 115.480656, 35.23375 ],
+			'武汉' : [ 114.31, 30.52 ],
+			'纽约' : [ -73.996801, 40.793299 ],
+			'巴黎' : [ 2.407173, 48.81577 ],
+			'悉尼' : [ 151.094126, -33.812485 ]
+		};
+
+		var convertData = function(data) {
+			var res = [];
+			for (var i = 0; i < data.length; i++) {
+				var geoCoord = geoCoordMap[data[i].name];
+				if (geoCoord) {
+					res.push({
+						name : data[i].name,
+						value : geoCoord.concat(data[i].value)
+					});
+				}
+			}
+			return res;
+		};
+
+		var option = {
+			title : {
+				text : '我的足迹',
+				subtext : '一生要走的地方',
+				sublink : 'http://www.pm25.in',
+				left : 'center'
+			},
+			tooltip : {
+				trigger : 'item'
+			},
+			bmap : {
+				center : [ 104.114129, 37.550339 ],
+				zoom : 5,
+				roam : true,
+				mapStyle : {
+					styleJson : [ {
+						'featureType' : 'water',
+						'elementType' : 'all',
+						'stylers' : {
+							'color' : '#d1d1d1'
+						}
+					}, {
+						'featureType' : 'land',
+						'elementType' : 'all',
+						'stylers' : {
+							'color' : '#f3f3f3'
+						}
+					}, {
+						'featureType' : 'railway',
+						'elementType' : 'all',
+						'stylers' : {
+							'visibility' : 'off'
+						}
+					}, {
+						'featureType' : 'highway',
+						'elementType' : 'all',
+						'stylers' : {
+							'color' : '#fdfdfd'
+						}
+					}, {
+						'featureType' : 'highway',
+						'elementType' : 'labels',
+						'stylers' : {
+							'visibility' : 'off'
+						}
+					}, {
+						'featureType' : 'arterial',
+						'elementType' : 'geometry',
+						'stylers' : {
+							'color' : '#fefefe'
+						}
+					}, {
+						'featureType' : 'arterial',
+						'elementType' : 'geometry.fill',
+						'stylers' : {
+							'color' : '#fefefe'
+						}
+					}, {
+						'featureType' : 'poi',
+						'elementType' : 'all',
+						'stylers' : {
+							'visibility' : 'off'
+						}
+					}, {
+						'featureType' : 'green',
+						'elementType' : 'all',
+						'stylers' : {
+							'visibility' : 'off'
+						}
+					}, {
+						'featureType' : 'subway',
+						'elementType' : 'all',
+						'stylers' : {
+							'visibility' : 'off'
+						}
+					}, {
+						'featureType' : 'manmade',
+						'elementType' : 'all',
+						'stylers' : {
+							'color' : '#d1d1d1'
+						}
+					}, {
+						'featureType' : 'local',
+						'elementType' : 'all',
+						'stylers' : {
+							'color' : '#d1d1d1'
+						}
+					}, {
+						'featureType' : 'arterial',
+						'elementType' : 'labels',
+						'stylers' : {
+							'visibility' : 'off'
+						}
+					}, {
+						'featureType' : 'boundary',
+						'elementType' : 'all',
+						'stylers' : {
+							'color' : '#fefefe'
+						}
+					}, {
+						'featureType' : 'building',
+						'elementType' : 'all',
+						'stylers' : {
+							'color' : '#d1d1d1'
+						}
+					}, {
+						'featureType' : 'label',
+						'elementType' : 'labels.text.fill',
+						'stylers' : {
+							'color' : '#999999'
+						}
+					} ]
+				}
+			},
+			series : [ {
+				name : 'pm2.5',
+				type : 'scatter',
+				coordinateSystem : 'bmap',
+				data : convertData(data),
+				symbolSize : function(val) {
+					return val[2] / 10;
+				},
+				label : {
+					normal : {
+						formatter : '{b}',
+						position : 'right',
+						show : false
+					},
+					emphasis : {
+						show : true
+					}
+				},
+				itemStyle : {
+					normal : {
+						color : 'purple'
+					}
+				}
+			}, {
+				name : 'Top 5',
+				type : 'effectScatter',
+				coordinateSystem : 'bmap',
+				data : convertData(data.sort(function(a, b) {
+					return b.value - a.value;
+				}).slice(0, 6)),
+				symbolSize : function(val) {
+					return val[2] / 10;
+				},
+				showEffectOn : 'render',
+				rippleEffect : {
+					brushType : 'stroke'
+				},
+				hoverAnimation : true,
+				label : {
+					normal : {
+						formatter : '{b}',
+						position : 'right',
+						show : true
+					}
+				},
+				itemStyle : {
+					normal : {
+						color : 'purple',
+						shadowBlur : 10,
+						shadowColor : '#333'
+					}
+				},
+				zlevel : 1
+			} ]
+		};
+
+		// 使用刚指定的配置项和数据显示图表。
+		myChart.setOption(option, true);
+	</script>
+
+
+</body>
+</html>
