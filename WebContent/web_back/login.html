@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Welcome BACK DDCOME</title>
+        <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- bootstrap framework -->
+        <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <!-- google webfonts -->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <!-- main stylesheet -->
+		<link href="assets/css/main.min.css" rel="stylesheet" media="screen">
+
+    </head>
+    <body class="login_page2">
+
+        <div class="login_container">
+            <form id="login_form" action="login_page2.html" class="form-horizontal">
+                <h2 class="heading_a"><span class="heading_text">Log in</span></h2>
+                <div class="form-group">
+                    <label for="login_username" class="col-sm-3 control-label">Username</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="login_username" autocomplete="off">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="login_password" class="col-sm-3 control-label">Password</label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control" id="login_password" autocomplete="off">
+                    </div>
+                </div>
+                <div class="form-group sepH_c">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <a href="javascript: login();" class="btn btn-sm btn-primary">Log in</a>
+                    </div>
+                </div>
+                <!-- 
+                <div class="text_hr"><span>or use</span></div>
+                <div class="row">
+                    <div class="col-xs-6"><button class="btn btn-sm btn-default btn-block" type="button"><span class="el-icon-github"></span> GitHub</button></div>
+                    <div class="col-xs-6"><button class="btn btn-sm btn-default btn-block" type="button"><span class="el-icon-twitter"></span> Twitter</button></div>
+                </div> 
+                -->
+            </form>
+        </div>
+        
+    <!-- jQuery -->
+	<script src="assets/js/jquery.min.js"></script>
+	<!-- jQuery Cookie -->
+	<script src="assets/js/jqueryCookie.min.js"></script>
+	<!-- Bootstrap Framework -->
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<!-- jBox -->
+	<script src="assets/lib/jBox-0.3.0/Source/jBox.min.js"></script>
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	  
+		ga('create', 'UA-54304677-1', 'auto');
+		ga('send', 'pageview');
+		
+		function showModel(str) {
+			//最后，进行提示信息的展示
+			new jBox('Notice', {
+				attributes : {
+					x : 'right',
+					y : 'bottom'
+				},
+				theme : 'NoticeBorder',
+				color : 'green',
+				audio : 'assets/lib/jBox-0.3.0/Source/audio/bling2',
+				volume : '100',
+				stack : false,
+				autoClose : 3000,
+				animation : {
+					open : 'slide:bottom',
+					close : 'slide:left'
+				},
+				onInit : function() {
+					this.options.title = 'Information:';
+					this.options.content = str;
+				}
+			});
+		}
+		
+		function login() {
+			//获取数据
+			var username = $("#login_username").val();
+			var password = $("#login_password").val();
+			if(username=='' || password=='') {
+				showModel("用户名或密码不能为空！");
+				return;
+			}
+			
+			var params = {
+				action : 'back-login',
+				data : {
+					username: username,
+					password: password
+				}
+			};
+			console.log(JSON.stringify(params));
+			$.ajax({
+				async : false, //禁止异步
+				url : "/ddcomeNew/goodLuckToDd/back",
+				type : "post",
+				data : {
+					params : JSON.stringify(params)
+				},
+				dataType : "json",
+				success : function(json) {
+					if(json.code==2) {
+						//step1.记录cookie
+						$.cookie('current_username', json.data[0].username, { expires: 7, path: '/' });
+						//step2.跳转页面
+						$(window).attr('location','index.html');
+					} else {
+						showModel(json.error);
+						res = json;
+					}
+				},
+				error : function(json) {
+					showModel("登陆异常，请重试！");
+					res = json;
+				}
+			});
+		}
+		
+	</script>
+
+    </body>
+</html>

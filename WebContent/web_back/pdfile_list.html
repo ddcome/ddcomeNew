@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="UTF-8">
+		<title>PDF文件列表</title>
+        <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+        <!-- bootstrap framework -->
+		<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		
+        <!-- icon sets -->
+            <!-- elegant icons -->
+                <link href="assets/icons/elegant/style.css" rel="stylesheet" media="screen">
+            <!-- elusive icons -->
+                <link href="assets/icons/elusive/css/elusive-webfont.css" rel="stylesheet" media="screen">
+            <!-- flags -->
+                <link rel="stylesheet" href="assets/icons/flags/flags.css">
+            <!-- scrollbar -->
+                <link rel="stylesheet" href="assets/lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
+
+        <!-- page specific stylesheets -->
+
+            <!-- footable -->
+            <link href="assets/lib/footable/css/footable.core.min.css" rel="stylesheet" media="screen">
+		
+        <!-- google webfonts -->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+        <!-- main stylesheet -->
+		<link href="assets/css/main.min.css" rel="stylesheet" media="screen" id="mainCss">
+
+        <!-- moment.js (date library) -->
+        <script src="assets/js/moment-with-langs.min.js"></script>
+
+    </head>
+    <body class="side_menu_active side_menu_expanded">
+        <div id="page_wrapper">
+
+            <!-- header -->
+            <header id="main_header">
+            </header>
+
+            <!-- breadcrumbs -->
+            <nav id="breadcrumbs">
+                <ul>
+                    <li><a href="dashboard.html">首页</a></li>
+		            <li><span>PDF文件发布</span></li>
+		            <li><span>PDF文件列表</span></li>
+		        </ul>
+            </nav>
+
+            <!-- main content -->
+            <div id="main_wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-2">
+                            <div class="list-group mailbox_menu">
+                                <a href="pages-mailbox.html" class="active list-group-item">
+                                    <span class="badge badge-danger">96</span>
+                                    <span class="menu_icon icon_download"></span>已上传
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-9 col-lg-10">
+                            <div class="row">
+                                <div class="col-md-5 col-md-push-7">
+                                    <input id="message_filter" type="text" class="form-control input-sm" placeholder="Search..."/>
+                                </div>
+                                <div class="col-md-5 col-md-pull-5">
+                                    <div class="btn-group btn-group-sm">
+                                        <button type="button" class="btn btn-default" onclick="location.href='upload_pdf.html'">发布</button>
+                                        <button type="button" class="btn btn-default text-danger">删除</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr/>
+                            <table id="mailbox_table" class="table table-yuk2 bg-fill toggle-arrow-tiny" data-page-size="20" data-filter="#message_filter">
+                                <thead>
+                                    <tr>
+                                        <th class="cw footable_toggler"></th>
+                                        <th class="cw"><input type="checkbox" id="msgSelectAll"></th>
+                                        <th>文件名</th>
+                                        <th>时间</th>
+                                        <th>Size</th>
+                                    </tr>
+                                    <!-- 
+                                    <tr>
+                                        <th class="cw footable_toggler"></th>
+                                        <th class="cw"><input type="checkbox" id="msgSelectAll"></th>
+                                        <th class="cw"></th>
+                                        <th>文件名</th>
+                                        <th data-hide="phone">时间</th>
+                                        <th data-hide="phone,tablet">Size</th>
+                                    </tr>
+                                     -->
+                                </thead>
+                                <tbody id="articles_div">
+                                    <!-- 内容区 -->
+                                </tbody>
+                            </table>
+                            <ul id="my-page" class="pagination pagination-sm">
+							</ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- main menu -->
+            <nav id="main_menu">
+        
+                <div class="menu_wrapper">
+                    <ul>
+                        <li class="first_level">
+                            <a href="index.html">
+                                <span class="icon_house_alt first_level_icon"></span>
+                                <span class="menu-title">首页</span>
+                            </a>
+                        </li>
+                        <li class="first_level">
+                            <a href="javascript:void(0)">
+                                <span class="icon_group first_level_icon"></span>
+                                <span class="menu-title">用户管理</span>
+                            </a>
+                            <ul>
+                                <li><a href="manager_all.html">系统管理员</a></li>
+                                <li><a href="manager_configuration.html">当前用户设置</a></li>
+                                <li><a href="user_all.html">用户管理</a></li>
+                            </ul>
+                        </li>
+                        <li class="first_level">
+                            <a href="javascript:void(0)">
+                                <span class="icon_pencil_alt first_level_icon"></span>
+                                <span class="menu-title">内容管理</span>
+                            </a>
+                            <ul>
+                                <li class="submenu-title">Pages</li>
+                                <li><a href="content_add.html">新增内容</a></li>
+                                <li><a href="content_list.html">内容列表</a></li>
+                            </ul>
+                        </li>
+                        <li class="first_level">
+                            <a href="javascript:void(0)">
+                                <span class="icon_pens_alt first_level_icon"></span>
+                                <span class="menu-title">MarkDown笔记管理</span>
+                            </a>
+                            <ul>
+                                <li class="submenu-title">Pages</li>
+                                <li><a href="markdown_add.html">新增MarkDown笔记</a></li>
+                                <li><a href="markdown_list.html">MarkDown笔记列表</a></li>
+                            </ul>
+                        </li>
+                        <li class="first_level">
+                            <a href="javascript:void(0)">
+                                <span class="icon_document first_level_icon"></span>
+                                <span class="menu-title">PDF文件发布</span>
+                            </a>
+                            <ul>
+                                <li class="submenu-title">Components</li>
+                                <li><a href="upload_pdf.html">发布</a></li>
+                                <li><a class="act_nav" href="pdfile_list.html">PDF文件列表</a></li>
+                            </ul>
+                        </li>
+                        <li class="first_level">
+                            <a href="javascript:void(0)">
+                                <span class="icon_comment first_level_icon"></span>
+                                <span class="menu-title">评论管理</span>
+                                <span class="label label-danger">6</span>
+                            </a>
+                            <ul>
+                                <li class="submenu-title">Plugins</li>
+                                <li><a href="comment_unchecked.html">回复评论(6)</a></li>
+                                <li><a href="comment_list.html">所有评论</a></li>
+                            </ul>
+                        </li>
+                        <li class="first_level">
+                            <a href="javascript:void(0)">
+                                <span class="icon_tools first_level_icon"></span>
+                                <span class="menu-title">其他设置</span>
+                            </a>
+                            <ul>
+                                <li class="submenu-title">Plugins</li>
+                                <li><a href="author_setting.html">关于作者</a></li>
+                                <li><a href="people_test.html">公测设置</a></li>
+                                <li><a href="books_list.html">读书管理</a></li>
+								<li><a href="words_list.html">语录管理</a></li>
+                            </ul>
+                        </li>
+                        <li class="first_level has_submenu">
+                            <a href="javascript:void(0)">
+                                <span class="first_level_icon icon_menu-circle_alt2"></span>
+                                <span class="menu-title">扩展</span>
+                            </a>
+                            <ul>
+                                <li class="submenu-title">Sub menu</li>
+                                <li><a href="javascript:void(0)">01. Lorem ipsum</a></li>
+                                <li class="has_submenu">
+                                    <a href="javascript:void(0)">02. Lorem ipsum</a>
+                                   <ul>
+                                        <li class="has_submenu">
+                                            <a href="javascript:void(0)">02.1 Lorem ipsum dolor sit amet</a>
+                                            <ul>
+                                                <li><a href="javascript:void(0)">02.1.1 Lorem ipsum</a></li>
+                                                <li><a href="javascript:void(0)">02.1.2 Lorem ipsum</a></li>
+                                                <li><a href="javascript:void(0)">02.1.3 Lorem ipsum</a></li>
+                                                <li><a href="javascript:void(0)">02.1.4 Lorem ipsum</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="javascript:void(0)">02.2 Lorem ipsum</a></li>
+                                        <li><a href="javascript:void(0)">02.3 Lorem ipsum</a></li>
+                                        <li><a href="javascript:void(0)">02.4 Lorem ipsum</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has_submenu">
+                                    <a href="javascript:void(0)">03. Lorem ipsum</a>
+                                    <ul>
+                                        <li><a href="javascript:void(0)">03.1 Lorem ipsum</a></li>
+                                        <li><a href="javascript:void(0)">03.2 Lorem ipsum</a></li>
+                                        <li><a href="javascript:void(0)">03.3 Lorem ipsum</a></li>
+                                        <li><a href="javascript:void(0)">03.4 Lorem ipsum</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="javascript:void(0)">04. Lorem ipsum</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="menu_toggle">
+                    <span class="icon_menu_toggle">
+                        <i class="arrow_carrot-2left toggle_left"></i>
+                        <i class="arrow_carrot-2right toggle_right" style="display:none"></i>
+                    </span>
+                </div>
+            </nav>
+
+        </div>
+
+        <!-- jQuery -->
+        <script src="assets/js/jquery.min.js"></script>
+        <!-- jQuery Cookie -->
+        <script src="assets/js/jqueryCookie.min.js"></script>
+        <!-- Bootstrap Framework -->
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <!-- retina images -->
+        <script src="assets/js/retina.min.js"></script>
+        <!-- switchery -->
+        <script src="assets/lib/switchery/dist/switchery.min.js"></script>
+        <!-- typeahead -->
+        <script src="assets/lib/typeahead/typeahead.bundle.min.js"></script>
+        <!-- fastclick -->
+        <script src="assets/js/fastclick.min.js"></script>
+        <!-- match height -->
+        <script src="assets/lib/jquery-match-height/jquery.matchHeight-min.js"></script>
+        <!-- scrollbar -->
+        <script src="assets/lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+
+        <!--加载页头-->
+        <script src="assets/js/main_header.js"></script>
+
+        <!-- Yukon Admin functions -->
+        <script src="assets/js/yukon_all.js"></script>
+
+	    <!-- page specific plugins -->
+
+        <!-- footable -->
+        <script src="assets/lib/footable/footable.min.js"></script>
+        <script src="assets/lib/footable/footable.paginate.min.js"></script>
+        <script src="assets/lib/footable/footable.filter.min.js"></script>
+
+		<!-- 新增的JS代码区域 -->
+		<script src="assets/js/myPage.own.js"></script>
+
+        <script>
+        
+	        /*
+			全局变量区域
+			*/
+			var _data;
+			
+			function paged() {
+				$("#my-page").empty();
+				var cont = '';
+				cont += '<li class="footable-page-arrow"><a href="javascript:getPage('+minPageNum+');">F</a></li>';
+				for(var i=currentMinNum; i<=currentMaxNum; i++) {
+					cont +='<li class="footable-page';
+					if(i==currentPageNum) {
+						cont += ' active"><a class="active" href="javascript:getPage('+i+');">'+i+'</a></li>';
+					} else {
+						cont += '"><a href="javascript:getPage('+i+');">'+i+'</a></li>';
+					}
+				}
+				cont += '<li class="footable-page-arrow"><a href="javascript:getPage('+maxPageNum+');">L</a></li>';
+				cont += '<li><a>共'+dataSum+'条</a></li>';
+				$("#my-page").append($(cont));
+			}
+			
+			function getPage(currentP) {
+				changePage(currentP);
+				paged();
+				addCont(_data);
+				printPageInfo();
+			}
+			
+			function initP(data,num) {
+				initPage(data,num);
+				paged();
+			}
+        
+            $(function() {
+                // footable
+                yukon_footable.p_pages_mailbox();
+
+                yukon_mailbox.init();
+                
+                var res = select();
+                console.log(res);
+                
+                _data = res;
+    			
+    			initP(res,5);
+    			
+    			//2.加载数据到页面
+    			addCont(res);
+    			
+    			paged();
+                
+            });
+            
+            function addCont(res) {
+            	$("#articles_div").empty();
+            	var trStr ='';
+            	var indexMin = (currentPageNum-1)*everyPageTotal;
+    			var indexMax = ((currentPageNum-1)*everyPageTotal+everyPageTotal)>=dataSum?dataSum:((currentPageNum-1)*everyPageTotal+everyPageTotal);
+    			
+    			for (var i = indexMin; i < indexMax; i++) {
+                	
+                	trStr+= ''+
+	                	'<tr class="unreaded">'+
+			                '<td></td>'+
+			                '<td><div><input type="checkbox" class="msgSelect"></div></td>'+
+			                '<td>'+res[i].title+'</td>'+
+			                '<td>'+res[i].publish_time+'</td>'+
+			                '<td>'+res[i].file_size+'</td>'+
+			        	'</tr>';
+                }
+                $("#articles_div").append($(trStr));
+            }
+            
+            function select() {
+				//组装传输对象
+				var loginInfoValue = new Object();
+				var params = {
+					action:'select-articles-pdf',
+					data:""
+				}; 
+				var res;
+				//AJAX请求	
+				$.ajax({
+					async:false, //禁止异步
+					url : "/ddcomeNew/goodLuckToDd/back",
+					type : "post",
+					data : {
+						params: JSON.stringify(params)
+					},
+					dataType : "json",
+					success : function(json) {
+						/*
+						$("#message").html(json.message);
+						//成功跳转
+						if(json.status.toString() == '1'){
+							 window.location.href="index.html";
+						}
+						*/
+						console.log("成功 >>> ");
+						res = json;
+					},
+					error : function(json) {
+						/*
+						alert(json.message);
+						$("#message").html(json.message);
+						*/
+						console.log("失败");
+						res = json;
+					}
+				});
+				return res;
+			}
+        </script>
+        
+        <!-- style switcher -->
+        <div id="style_switcher">
+            <a class="switcher_toggle"><i class="icon_cog"></i></a>
+            <div class="style_items">
+                <div class="heading_b"><span class="heading_text">Top Bar Color</span></div>
+                <ul class="clearfix" id="topBar_style_switch">
+                    <li class="sw_tb_style_0 style_active" title=""><span class="icon_check_alt2"></span></li>
+                    <li class="sw_tb_style_1" title="topBar_style_1"><span class="icon_check_alt2"></span></li>
+                    <li class="sw_tb_style_2" title="topBar_style_2"><span class="icon_check_alt2"></span></li>
+                    <li class="sw_tb_style_3" title="topBar_style_3"><span class="icon_check_alt2"></span></li>
+                    <li class="sw_tb_style_4" title="topBar_style_4"><span class="icon_check_alt2"></span></li>
+                    <li class="sw_tb_style_5" title="topBar_style_5"><span class="icon_check_alt2"></span></li>
+                    <li class="sw_tb_style_6" title="topBar_style_6"><span class="icon_check_alt2"></span></li>
+                    <li class="sw_tb_style_7" title="topBar_style_7"><span class="icon_check_alt2"></span></li>
+                    <li class="sw_tb_style_8" title="topBar_style_8"><span class="icon_check_alt2"></span></li>
+                    <li class="sw_tb_style_9" title="topBar_style_9"><span class="icon_check_alt2"></span></li>
+                    <li class="sw_tb_style_10" title="topBar_style_10"><span class="icon_check_alt2"></span></li>
+                    <li class="sw_tb_style_11" title="topBar_style_11"><span class="icon_check_alt2"></span></li>
+                    <li class="sw_tb_style_12" title="topBar_style_12"><span class="icon_check_alt2"></span></li>
+                    <li class="sw_tb_style_13" title="topBar_style_13"><span class="icon_check_alt2"></span></li>
+                    <li class="sw_tb_style_14" title="topBar_style_14"><span class="icon_check_alt2"></span></li>
+                </ul>
+            </div>
+            <hr/>
+            <div class="clearfix hidden-sm hidden-md hidden-xs sepH_b">
+                <label>Fixed layout</label>
+                <div class="pull-right"><input type="checkbox" id="fixed_layout_switch" class="js-switch mini-switch"></div>
+            </div>
+            <div class="style_items hidden-sm hidden-md hidden-xs" id="fixed_layout_bg_switch">
+                <hr/>
+                <div class="heading_b"><span class="heading_text">Background</span></div>
+                <ul class="clearfix">
+                    <li class="sw_bg_0" title="bg_0"></li>
+                    <li class="sw_bg_1" title="bg_1"></li>
+                    <li class="sw_bg_2" title="bg_2"></li>
+                    <li class="sw_bg_3" title="bg_3"></li>
+                    <li class="sw_bg_4" title="bg_4"></li>
+                    <li class="sw_bg_5" title="bg_5"></li>
+                    <li class="sw_bg_6" title="bg_6"></li>
+                    <li class="sw_bg_7" title="bg_7"></li>
+                </ul>
+                <hr/>
+            </div>
+            <div class="clearfix sepH_b">
+                <label>Top Menu</label>
+                <div class="pull-right"><input type="checkbox" id="top_menu_switch" class="js-switch mini-switch"></div>
+            </div>
+            <div class="clearfix sepH_b">
+                <label>Hide Breadcrumbs</label>
+                <div class="pull-right"><input type="checkbox" id="breadcrumbs_hide" class="js-switch mini-switch"></div>
+            </div>
+            <div class="text-center sepH_a">
+                <button data-toggle="modal" data-target="#showCSSModal" id="showCSS" class="btn btn-default btn-xs btn-outline" type="button">Show CSS</button>
+            </div>
+        </div>
+        <div class="modal fade" id="showCSSModal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">CSS Classes</h4>
+                    </div>
+                    <div class="modal-body">
+                        <pre id="showCSSPre"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
